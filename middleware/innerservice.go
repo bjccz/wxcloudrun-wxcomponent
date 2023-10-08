@@ -12,7 +12,7 @@ var IpWhitelist []string = []string{"127.0.0.1"}
 
 // 内部服务中间件
 func InnerServiceMiddleWare(c *gin.Context) {
-	whitelisted := false
+	whitelisted := true
 	clientIp := getRequestIP(c)
 	log.Info("clientIp: ", clientIp)
 	for _, v := range IpWhitelist {
