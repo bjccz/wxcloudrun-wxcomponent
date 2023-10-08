@@ -25,6 +25,7 @@ func Include(opts ...Option) {
 func Init() *gin.Engine {
 	r := gin.Default()
 	r.Use(middleware.LogMiddleWare)
+	innerservice.Routers(r)
 
 	// 微信消息推送
 	wxcallback.Routers(r)
