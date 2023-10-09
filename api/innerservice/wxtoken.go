@@ -43,3 +43,14 @@ func GetAuthorizerAccessTokenHandler(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, errno.OK.WithData(gin.H{"token": token}))
 }
+
+// WxAuthorizedHandler 微信回调通知
+func WxAuthorizedHandler(c *gin.Context) {
+	//token, err := wx.GetAuthorizerAccessToken(c.Query("appid"))
+	//if err != nil {
+	//	c.JSON(http.StatusOK, errno.ErrSystemError.WithData(err.Error()))
+	//	return
+	//}
+
+	c.JSON(http.StatusOK, errno.OK.WithData(gin.H{"appid": c.Query("appid")}))
+}

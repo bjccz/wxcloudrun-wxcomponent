@@ -139,7 +139,8 @@ func getAuthorizerListHandler(c *gin.Context) {
 		return
 	}
 	appid := c.DefaultQuery("appid", "")
-	records, total, err := dao.GetAuthorizerRecords(appid, offset, limit)
+	nickname := c.DefaultQuery("nickName", "")
+	records, total, err := dao.GetAuthorizerRecords(appid, nickname, offset, limit)
 	if err != nil {
 		c.JSON(http.StatusOK, errno.ErrSystemError.WithData(err.Error()))
 		return

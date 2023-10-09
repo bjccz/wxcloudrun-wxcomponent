@@ -53,12 +53,17 @@ func ClearAuthorizerRecordsBefore(time time.Time) error {
 }
 
 // GetAuthorizerRecords 获取授权账号记录
-func GetAuthorizerRecords(appid string, offset int, limit int) ([]*model.Authorizer, int64, error) {
+func GetAuthorizerRecords(appid string, nickname string, offset int, limit int) ([]*model.Authorizer, int64, error) {
 	var records = []*model.Authorizer{}
 	cli := db.Get()
 	result := cli.Table(authorizerTableName)
+
 	if appid != "" {
 		result = result.Where("appid = ?", appid)
+	}
+
+	if nickname != "" {
+		result = result.Where("nickname = ?", nickname)
 	}
 	var count int64
 	result = result.Count(&count).Offset(offset).Limit(limit).Find(&records)

@@ -11,4 +11,5 @@ func Routers(e *gin.Engine) {
 	g.GET("/component-access-token", GetComponentAccessTokenHandler)
 	g.GET("/authorizer-access-token", GetAuthorizerAccessTokenHandler)
 	g.GET("/ticket", GetTicketHandler)
+	g.GET("/wxauthorized", WxAuthorizedHandler)
 }
