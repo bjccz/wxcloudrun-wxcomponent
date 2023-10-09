@@ -26,7 +26,7 @@ func GetAuthorizerAccessToken(appid string) (string, error) {
 }
 
 func getNewAuthorizerAccessToken(appid string) (string, error) {
-	records, _, err := dao.GetAuthorizerRecords(appid, 0, 1)
+	records, _, err := dao.GetAuthorizerRecords(appid, "", 0, 1)
 	if err != nil {
 		return "", err
 	}
