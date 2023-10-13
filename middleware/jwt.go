@@ -16,6 +16,7 @@ import (
 func JWTMiddleWare(c *gin.Context) {
 	code := errno.OK
 	strToken := c.Request.Header.Get("Authorization")
+
 	token := utils.GetToken(strToken)
 	log.Debugf("jwt[%s]", token)
 

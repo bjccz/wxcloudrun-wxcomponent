@@ -31,7 +31,7 @@ func GetToken(strToken string) string {
 func GenerateToken(id string, username string) (string, error) {
 	log.Debugf("jwtExpireTime[%v]", config.ServerConf.JwtExpireTime)
 	nowTime := time.Now()
-	expiredTime := nowTime.Add(time.Duration(config.ServerConf.JwtExpireTime) * time.Second)
+	expiredTime := nowTime.Add(time.Duration(config.ServerConf.JwtExpireTime) * time.Hour)
 	claims := &Claims{
 		UserName: username,
 		RegisteredClaims: jwt.RegisteredClaims{
